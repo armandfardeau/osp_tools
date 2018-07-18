@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require "osp_tools"
+require "osp_tools/version"
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: osp_tools [options]"
+
+  opts.on("-v", "--version") { puts "osp_tools v#{OspTools::VERSION}"; exit(0) }
+
+  opts.on_tail("-h", "--help", "Show this message") { puts opts; exit(0) }
+end.parse!
+
+OspTools::CommandLine.execute(options)
